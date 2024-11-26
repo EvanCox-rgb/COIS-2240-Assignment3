@@ -1,9 +1,10 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.lang.reflect.Constructor;
 
 public class LibraryManagementTest {							
 
-	//@Test								//needed to, y'know.... test?
+	@Test								//needed to, y'know.... test?
 	public void testBookId() {			//method header
 		try {
 			Book book1 = new Book(100, "book 100");			//instantiate 2 books we expect to be valid and not throw exception
@@ -46,6 +47,18 @@ public class LibraryManagementTest {
 		
 		}catch (Exception e) {								//throw the exception if there is an issue initializing member, book, or transaction. print out error
 			fail("book or member or transaction threw unexpected Error" + e.getMessage());
+		}
+	}
+	@Test
+	public void testSingletonTransaction() {
+		try {
+		Constructor<Transaction> constructor = Transaction.class.getDeclaredConstructor();
+		int modifier = constructor.getModifiers();
+		System.out.println(modifier);
+		assertEquals(2, modifier);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			fail("unexpected error" + e.getMessage());
 		}
 	}
 }

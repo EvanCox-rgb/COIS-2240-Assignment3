@@ -11,7 +11,7 @@ public class Transaction {
 	ArrayList<String> logs;
     // Perform the borrowing of a book
 	private static Transaction instance;		//static reference for our singleton design
-	public Transaction() {}						//non static constructor
+	private Transaction() {}						//non static constructor
 	
 	public void saveTransaction(String transaction){				//method declaration. will be passed transaction info
 		try {														//throw any exceptions
