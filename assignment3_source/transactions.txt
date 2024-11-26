@@ -1,0 +1,10 @@
+2024-11-25 21:59:32 - Borrowing: George borrowed Programming
+2024-11-25 22:00:00 - Borrowing: George borrowed Math
+2024-11-25 22:00:16 - Borrowing: Anne borrowed AI
+2024-11-25 22:01:42 - Returning: George returned Math
+2024-11-25 22:01:56 - Borrowing: Anne borrowed Math
+2024-11-26 14:36:59 - Borrowing: bob borrowed YeezyStrt
+2024-11-26 14:38:19 - Borrowing: bob borrowed book
+2024-11-26 14:38:23 - Returning: bob returned book
+2024-11-26 18:07:59 - Borrowing: bob borrowed book 100
+2024-11-26 18:11:36 - Borrowing: bob borrowed book 100

@@ -48,9 +48,12 @@ public class LibraryManagement {
                     id = scanner.nextInt();
                     
                     scanner.nextLine();
-
-                    Book newBook = new Book(id, title);
+                    try {
+                    Book newBook = new Book(id, title); 
                     library.addBook(newBook);
+                    }catch(Exception e) {
+                    	System.out.println("Error when adding book: " + e.getMessage());
+                    }
                     break;
                 case 3:
                 	System.out.println("\n--- Available Members ---");
