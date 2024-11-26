@@ -6,15 +6,31 @@ public class Library {
     private List<Book> books = new ArrayList<Book>();
 
     // Add a new member to the library
-    public void addMember(Member member) {
-        members.add(member);
+    public boolean addMember(Member member) {			//method constructor takes member passed from main, containing name and id
+    	int id = member.getId();					//get the id and put it in variable id
+    		if(findMemberById(id)==null) {			//if the id does not exist already
+    			members.add(member);				//add the member to members array
+    			System.out.println("Member added successfully.");	//notify user
+    			return true;										//return true
+    		}														//if id does exist, dont add, notify user, return false
+    		else {
+    			System.out.println("This member ID already exists. Please chose new ID");
+    			return false;
+    		}
     }
-    
     // Add a new book to the library
-    public void addBook(Book book) {
-        books.add(book);
+    public boolean addBook(Book book) {				//method constructor takes book passed from main, containing title and id
+    	int id = book.getId();						//get the id and put it in variable id
+		if(findBookById(id)==null) {				//if the id does not exist already
+			books.add(book);						//add the book to books array
+			System.out.println("Book added successfully.");		//notify user
+			return true;										//return true
+		}														//if id does exist, dont add, notify user, return false
+		else {
+			System.out.println("This book ID already exists. Please chose new ID");
+			return false;
+		}
     }
-
     // Find a member by ID
     public Member findMemberById(int id) {
         for (Member member : members) {

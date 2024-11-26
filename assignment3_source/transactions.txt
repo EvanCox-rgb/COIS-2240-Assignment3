@@ -1,6 +1,0 @@
-2024-11-25 20:13:19 - Borrowing: homer borrowed RAHHHHHHHHH
-2024-11-25 20:13:31 - Returning: homer returned RAHHHHHHHHH
-2024-11-25 20:15:25 - Borrowing: bob borrowed herals
-2024-11-25 20:15:30 - Returning: bob returned herals
-2024-11-25 20:42:34 - Borrowing: frank borrowed EpicBook
-2024-11-25 20:42:41 - Returning: frank returned EpicBook
