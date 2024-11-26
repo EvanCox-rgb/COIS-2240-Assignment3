@@ -13,37 +13,55 @@ public class Transaction {
 	private static Transaction instance;		//static reference for our singleton design
 	public Transaction() {}						//non static constructor
 	
-	public void saveTransaction(String transaction){
-		try {
-			ArrayList<String> prevLogs = new ArrayList<String>();
+	public void saveTransaction(String transaction){				//method declaration. will be passed transaction info
+		try {														//throw any exceptions
+			ArrayList<String> prevLogs = new ArrayList<String>();	//declare a new array list. will be filled with .txt's previous content
+																	//new declaration each method call prevents duplicate info being stored
+			BufferedReader reader = new BufferedReader(new FileReader("transactions.txt"));	//read .txt file
+			String line;											//will be compared to .txt lines to verify not null
+			while((line = reader.readLine()) != null){				//loop through .txt file until there is no more readable content
+				prevLogs.add(line);									//each line will be added as a new element is prevLogs
+				logs = prevLogs;									//logs is the permanent log holder
+			}														//at that point the logs will already be saved in the .txt file
+			reader.close();											//stop reader
 			
-			BufferedReader reader = new BufferedReader(new FileReader("transactions.txt"));
-			String line;
-			while((line = reader.readLine()) != null){
-				prevLogs.add(line);
-				//System.out.println(line);
-				logs = prevLogs;
-			}
-			reader.close();
-			
-			if (logs!=null) {
+			if (logs!=null) {			//if logs holds elements, then loop through each element, overiding old .txt file with old values + new ones
 				BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.txt"));
 				for (String logLine: logs) {
 					writer.write(logLine + "\n");
 				}
 				writer.write(transaction + "\n");
 				writer.close();
-			}
+			}							//if logs holds no elements (e.i empty) then just write the transaction to the .txt file
 			else {
 				BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.txt"));
 				writer.write(transaction + "\n");
 				writer.close();
 			}
 			
-		} catch (IOException e) {
+		} catch (IOException e) {		//print out StackTrace if an exception occurs
 			e.printStackTrace();
 		}
 	}
+	
+	public void displayTransactionHistory() {	//method declaration
+		boolean emptyLogs = true;				//will be used to verify if there are no transactions in the .txt file, avoiding exceptions
+		try {									//throw any exceptions
+			BufferedReader reader = new BufferedReader(new FileReader("transactions.txt"));	//same as saveTransaction() code
+			String line;
+			while((line = reader.readLine()) != null){
+				System.out.println(line + "\n");
+				emptyLogs = false;  //obviously if there are lines in the .txt file to read, then the logs are not be empty 
+			}
+			reader.close();			//stop reader
+			if (emptyLogs == true) 	//if logs are empty notify user
+				System.out.println("No transactions found");
+		  } 
+		  catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	
     public boolean borrowBook(Book book, Member member) {
