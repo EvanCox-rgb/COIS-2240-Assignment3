@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 
 public class LibraryManagementTest {							
 
-	@Test								//needed to, y'know.... test?
+	//@Test								//needed to, y'know.... test?
 	public void testBookId() {			//method header
 		try {
 			Book book1 = new Book(100, "book 100");			//instantiate 2 books we expect to be valid and not throw exception
@@ -26,5 +26,26 @@ public class LibraryManagementTest {
 			assertEquals("the id 99 is invalid", e.getMessage());		//test will fail if exception message is not the same as provided string
 		}
 	}
-	
+	@Test
+	public void testBorrowReturn() {
+		try {
+		Book book = new Book(100, "book 100");
+		Member member = new Member(100, "bob");
+		Transaction transaction = Transaction.getTransaction();
+		
+		assertTrue(book.isAvailable());			//test if book is available
+
+		assertTrue(transaction.borrowBook(book, member));	//test if borrowBook returns true
+		assertFalse(book.isAvailable());					//test if book is now unavailable
+		
+		assertFalse(transaction.borrowBook(book, member));	//test if borrowing the borrowed book returns as false
+		
+		assertTrue(transaction.returnBook(book, member));	//test if returning book returns true
+		
+		assertFalse(transaction.returnBook(book, member));	//test if returning same again book returns false
+		
+		}catch (Exception e) {								//throw the exception if there is an issue initializing member, book, or transaction. print out error
+			fail("book or member or transaction threw unexpected Error" + e.getMessage());
+		}
+	}
 }

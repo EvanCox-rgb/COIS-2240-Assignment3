@@ -8,3 +8,10 @@
 2024-11-26 14:38:23 - Returning: bob returned book
 2024-11-26 18:07:59 - Borrowing: bob borrowed book 100
 2024-11-26 18:11:36 - Borrowing: bob borrowed book 100
+2024-11-26 18:22:45 - Borrowing: bob borrowed book 100
+2024-11-26 18:22:45 - Returning: bob returned book 100
+2024-11-26 18:22:53 - Borrowing: bob borrowed book 100
+2024-11-26 18:23:01 - Borrowing: bob borrowed book 100
+2024-11-26 18:23:01 - Returning: bob returned book 100
+2024-11-26 18:26:30 - Borrowing: bob borrowed book 100
+2024-11-26 18:26:30 - Returning: bob returned book 100
